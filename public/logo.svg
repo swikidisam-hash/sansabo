@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="SANSABO logo">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0d3b66" />
+      <stop offset="100%" stop-color="#2c7be5" />
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#d72638" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#g1)"/>
+  <g transform="translate(16 14)">
+    <path d="M48 0L65 0L65 22L95 22L95 38L65 38L65 100L48 100L48 38L15 38L15 22L48 22Z" fill="white"/>
+    <path d="M45 16C55 16 64 25 64 35C64 58 45 69 45 69C45 69 26 58 26 35C26 25 35 16 45 16Z" fill="url(#g2)" opacity="0.9"/>
+    <path d="M40 36L52 36L52 82L40 82Z" fill="white"/>
+    <path d="M18 52L64 52L64 64L18 64Z" fill="white" opacity="0.9"/>
+  </g>
+</svg>
