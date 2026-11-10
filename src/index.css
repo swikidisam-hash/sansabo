@@ -170,19 +170,24 @@ button {
 
 .main-nav {
   display: flex;
-  gap: 18px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.nav-link {
-  font-size: 0.92rem;
+.nav-button {
+  border: none;
+  background: transparent;
   color: var(--gray-500);
-  transition: color 0.2s ease;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.nav-link:hover {
+.nav-button.active {
+  background: rgba(17, 87, 168, 0.08);
   color: var(--blue-700);
 }
 
@@ -260,7 +265,7 @@ button {
 }
 
 .hero-copy h1 {
-  font-size: clamp(2.5rem, 4vw, 4.2rem);
+  font-size: clamp(2.2rem, 4vw, 4rem);
   margin: 18px 0 12px;
   line-height: 1.06;
   color: var(--blue-900);
@@ -303,7 +308,8 @@ button {
 .ghost-button:hover,
 .search-box button:hover,
 .header-pill:hover,
-.sos-mini:hover {
+.sos-mini:hover,
+.nav-button:hover {
   transform: translateY(-1px);
 }
 
@@ -375,6 +381,7 @@ button {
 .card-header,
 .location-box,
 .emergency-resource,
+.profile-topline,
 .patient-summary-header {
   display: flex;
   align-items: center;
@@ -397,22 +404,6 @@ button {
   background: rgba(17, 87, 168, 0.05);
   flex-direction: column;
   align-items: flex-start;
-}
-
-.location-box span,
-.location-box strong,
-.emergency-resource span,
-.emergency-resource small,
-.patient-summary-header small,
-.medical-summary span,
-.place-card p,
-.place-meta span,
-.place-meta strong,
-.dash-card span,
-.dash-card em,
-.terms-box p,
-.architecture-grid p {
-  color: var(--gray-500);
 }
 
 .signal-list {
@@ -633,13 +624,19 @@ button {
   margin-top: 24px;
 }
 
-.place-list {
+.place-list,
+.queue-list,
+.history-list,
+.contact-block {
   margin-top: 20px;
   display: grid;
   gap: 16px;
 }
 
-.place-card {
+.place-card,
+.queue-item,
+.history-item,
+.contact-item {
   padding: 18px 20px;
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(234, 242, 255, 0.9), rgba(255, 255, 255, 0.95));
@@ -650,16 +647,24 @@ button {
   gap: 20px;
 }
 
-.place-card h3 {
+.place-card h3,
+.history-item strong,
+.queue-item strong,
+.contact-item strong {
   margin: 0 0 6px;
   color: var(--gray-700);
 }
 
-.place-card p {
+.place-card p,
+.history-item p,
+.queue-item p,
+.contact-item span {
   margin: 0;
+  color: var(--gray-500);
 }
 
-.place-meta {
+.place-meta,
+.queue-status-block {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -700,10 +705,14 @@ button {
   font-weight: 700;
 }
 
-.patient-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.profile-topline {
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.profile-topline p {
+  margin: 6px 0 0;
+  color: var(--gray-500);
 }
 
 .avatar {
@@ -717,32 +726,86 @@ button {
   font-weight: 800;
 }
 
-.patient-summary-header {
-  justify-content: flex-start;
-}
-
-.medical-summary {
+.medical-summary-grid {
+  margin-top: 20px;
   display: grid;
-  gap: 18px;
-  margin: 20px 0;
+  gap: 12px;
 }
 
-.medical-summary div {
+.summary-row {
   padding: 14px 16px;
-  background: rgba(17, 87, 168, 0.04);
   border-radius: 16px;
+  background: rgba(17, 87, 168, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-row span {
+  color: var(--gray-500);
+}
+
+.summary-row strong {
+  color: var(--gray-700);
+}
+
+.contact-block {
+  margin-top: 22px;
+  padding-top: 8px;
+}
+
+.contact-block h3 {
+  margin: 0;
+  color: var(--blue-900);
+}
+
+.contact-item {
+  padding: 16px 18px;
+}
+
+.status-pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  background: rgba(17, 87, 168, 0.08);
+  color: var(--blue-700);
+}
+
+.status-pill.en\ consultation {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--red-600);
+}
+
+.status-pill.disponible {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--green-500);
+}
+
+.availability-box {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.availability-box div {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(17, 87, 168, 0.05);
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  align-items: center;
 }
 
-.medical-summary strong {
-  color: var(--gray-700);
+.availability-box span {
+  color: var(--gray-500);
 }
 
 .wide {
   width: 100%;
+  margin-top: 18px;
 }
 
 .architecture-section {
@@ -843,7 +906,11 @@ button {
   .hero-actions,
   .search-box,
   .place-card,
-  .medical-summary div {
+  .medical-summary-grid,
+  .queue-item,
+  .history-item,
+  .contact-item,
+  .availability-box div {
     flex-direction: column;
     align-items: stretch;
   }
